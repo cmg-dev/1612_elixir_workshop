@@ -2,6 +2,8 @@
 
 <ol>
 <%= for page <- @pages do %>
-    <li><%= link page.title, to: page.title %> - <%= link "[Edit]", to: page.title<>"/edit" %></li>
+  <li>
+    <%= link page.title, to: page.title %> - <%= link "[Edit]", to: page_path(@conn, :edit, page.title) %>
+  </li>
 <% end %>
 </ol>
