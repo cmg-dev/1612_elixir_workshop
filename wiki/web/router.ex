@@ -18,6 +18,7 @@ defmodule Wiki.Router do
 
     get "/", PageController, :index
     get "/:id", PageController, :show
+    put "/:id", PageController, :update
     get "/:id/edit", PageController, :edit
   end
 

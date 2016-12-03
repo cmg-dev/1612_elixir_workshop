@@ -1,7 +1,7 @@
 <h1>Pages</h1>
 
 <ul>
-  <%= for page <- @pages do %>
-    <li><%= link page.title, to: page.title %></li>
-  <% end %>
+<%= for page <- @pages do %>
+  <li><%= link page.title, to: page.title %> - <%= link "[Edit]", to: page.title<>"/edit" %></li>
+<% end %>
 </ul>
