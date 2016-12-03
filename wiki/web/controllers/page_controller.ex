@@ -10,4 +10,7 @@ defmodule Wiki.PageController do
     page = Repo.get_by!(Wiki.Page, title: id)
     render conn, "show.html", page: page
   end
+
+  def edit(conn, %{"id" => id}) do
+  end
 end
