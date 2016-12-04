@@ -1,36 +1,6 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="">
-    <meta name="author" content="">
+<h2>Edit page</h2>
 
-    <title>Edit <%= @page.title %> </title>
-    <link rel="stylesheet" href="<%= static_path(@conn, "/css/app.css") %>">
-  </head>
+<%= render "form.html", changeset: @changeset,
+                        action: page_path(@conn, :update, @page) %>
 
-  <body>
-    <h1>Editing this: <%=@page.title %>!</h1>
-
-    <div><%= raw @page.body %></div>
-    <%= form_for @changeset, page_path(@conn, :update, @page.title), fn f -> %>
-      <div class="form-group">
-        <%= label f, :title, class: "control-label" %>
-        <%= text_input f, :title, class: "form-control" %>
-        <%= error_tag f, :title %>
-      </div>
-
-      <div class="form-group">
-        <%= label f, :body, class: "control-label" %>
-        <%= textarea f, :body, class: "form-control" %>
-        <%= error_tag f, :body %>
-      </div>
-
-      <div class="form-group">
-        <%= submit "Submit", class: "btn btn-primary" %>
-      </div>
-    <% end %>
-  </body>
-</html>
+<%= link "Back", to: page_path(@conn, :index) %>

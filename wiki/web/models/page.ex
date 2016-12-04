@@ -15,5 +15,6 @@ defmodule Wiki.Page do
     struct
     |> cast(params, [:title, :body])
     |> validate_required([:title, :body])
+    |> unique_constraint(:title)
   end
 end

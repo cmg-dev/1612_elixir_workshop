@@ -13,14 +13,11 @@ defmodule Wiki.Router do
     plug :accepts, ["json"]
   end
 
+
   scope "/", Wiki do
     pipe_through :browser # Use the default browser stack
-
-    get "/", PageController, :index
-    get "/:id", PageController, :show
-    put "/:id", PageController, :update
-    get "/:id/edit", PageController, :edit
-    delete "/:id/delete", PageController, :delete
+    resources "/comments", CommentController, except: [:show, :edit, :update]
+    resources "/", PageController
   end
 
   # Other scopes may use custom stacks.
