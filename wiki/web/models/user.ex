@@ -1,5 +1,6 @@
 defmodule Wiki.User do
   use Wiki.Web, :model
+  import Comeonin.Bcrypt
 
   schema "users" do
     field :email, :string
@@ -32,6 +33,7 @@ defmodule Wiki.User do
   end
 
   defp hashed_password(password) do
-    :crypto.hash(:sha256, password) |> Base.encode16
+    Comeonin.Bcrypt.hashpwsalt(password)
+    |> Base.encode16
   end
 end
