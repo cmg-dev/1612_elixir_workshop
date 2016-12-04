@@ -27,7 +27,8 @@ defmodule Wiki.PageController do
   end
 
   def show(conn, %{"id" => id}) do
-    page = Repo.get!(Page, id)
+    page = Repo.get_by!(Page, id: id)
+    |> Repo.preload(:comments)
     render(conn, "show.html", page: page)
   end
 

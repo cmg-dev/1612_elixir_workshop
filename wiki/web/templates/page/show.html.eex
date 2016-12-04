@@ -1,18 +1,23 @@
-<h2>Show page</h2>
+<h2 data-page-id="<%= @page.id %>"><%= @page.title %></h2>
 
-<ul>
 
-  <li>
-    <strong>Title:</strong>
-    <%= @page.title %>
-  </li>
+<div>
+  <%= wiki_to_html(@page.body) %>
+</div>
 
-  <li>
-    <strong>Body:</strong>
-    <%= wiki_to_html(@page.body) %>
-  </li>
+<hr>
 
-</ul>
+<%= render Wiki.CommentView,
+    "index.html",
+    conn: @conn,
+    page: @page,
+    comments: @page.comments %>
+
+<br>
+
+<hr>
 
 <%= link "Edit", to: page_path(@conn, :edit, @page) %>
+<br>
 <%= link "Back", to: page_path(@conn, :index) %>
+<br>
