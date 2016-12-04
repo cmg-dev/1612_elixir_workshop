@@ -28,4 +28,11 @@ defmodule Wiki.PageController do
         render conn, "edit.html", page: page, changeset: changeset
     end
   end
+
+  def delete(conn, %{"id" => id}) do
+    page = Repo.get_by!(Wiki.Page, title: id)
+
+    Repo.delete!(page)
+    redirect conn, to: page_path(conn, :index)
+  end
 end
